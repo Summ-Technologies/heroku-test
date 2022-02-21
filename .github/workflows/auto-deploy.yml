@@ -23,12 +23,12 @@ jobs:
   trigger-deploy-app:
     needs: changes
     if: ${{ needs.changes.outputs.app == 'true' }}
-    uses: ./.github/workflows/deploy.yaml
+    uses: ./.github/workflows/deploy.yml
     with:
       app: app
   deploy-admin:
     needs: changes
     if: ${{ needs.changes.outputs.app == 'true' }}
-    uses: ./.github/workflows/deploy.yaml
+    uses: ./.github/workflows/deploy.yml
     with:
       app: admin
