@@ -15,8 +15,12 @@ jobs:
     uses: ./.github/workflows/deploy.yml
     with:
       app: app
+    secrets:
+      HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
   manual-deploy-admin:
     if: ${{ github.event.inputs.app == 'admin'}}
     uses: ./.github/workflows/deploy.yml
     with:
       app: admin
+    secrets:
+      HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}

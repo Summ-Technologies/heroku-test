@@ -20,15 +20,19 @@ jobs:
               - 'app/**'
             admin:
               - 'admin/**'
-  trigger-deploy-app:
+  auto-deploy-app:
     needs: changes
     if: ${{ needs.changes.outputs.app == 'true' }}
     uses: ./.github/workflows/deploy.yml
     with:
       app: app
-  deploy-admin:
+    secrets:
+      HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+  auto-deploy-admin:
     needs: changes
     if: ${{ needs.changes.outputs.app == 'true' }}
     uses: ./.github/workflows/deploy.yml
     with:
       app: admin
+    secrets:
+      HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}

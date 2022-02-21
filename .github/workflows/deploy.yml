@@ -5,6 +5,9 @@ on:
       app:
         required: true
         type: string # either app or admin
+    secrets:
+      HEROKU_API_KEY:
+        required: true
 jobs:
   deploy-app:
     if: ${{ inputs.app == 'app' }}
