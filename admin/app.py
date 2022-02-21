@@ -1,3 +1,5 @@
+import os
+
 from flask import Flask
 
 app = Flask(__name__)
@@ -5,4 +7,5 @@ app = Flask(__name__)
 
 @app.route("/hb")
 def hb():
-    return "Admin is alive, number 2"
+    test_envvar = os.environ.get("TEST_ENVVAR")
+    return f"Admin is alive, number 2, {test_envvar}"
