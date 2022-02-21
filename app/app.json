@@ -1,0 +1,6 @@
+{
+  "stack": "container",
+  "env": {
+    "TEST_ENVVAR": "testing."
+  }
+}
