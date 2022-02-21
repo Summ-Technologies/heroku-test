@@ -5,4 +5,4 @@ app = Flask(__name__)
 
 @app.route("/hb")
 def hb():
-    return "App is alive"
+    return "App is alive, number 2"
