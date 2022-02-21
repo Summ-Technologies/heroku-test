@@ -1,0 +1,38 @@
+name: Manual deploy
+on:
+  workflow_dispatch:
+    inputs:
+      app:
+        description: "The app to deploy"
+        required: true
+        type: choice
+        options:
+          - app
+          - admin
+jobs:
+  deploy-app:
+    if: ${{ github.event.inputs.app == 'app'}}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: akhileshns/heroku-deploy@v3.12.12
+        with:
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: flok-heroku-test1
+          heroku_email: "jared@goflok.com"
+          appdir: "app"
+          stack: "container"
+          env_file: /.env.prod
+  deploy-admin:
+    if: ${{ github.event.inputs.app == 'admin'}}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: akhileshns/heroku-deploy@v3.12.12
+        with:
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: flok-heroku-test2
+          heroku_email: "jared@goflok.com"
+          appdir: "admin"
+          stack: "container"
+          env_file: /.env.prod
