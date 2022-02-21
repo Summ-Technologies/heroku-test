@@ -8,8 +8,8 @@ jobs:
     runs-on: ubuntu-latest
     # Set job outputs to values from filter step
     outputs:
-      flok: ${{ steps.filter.outputs.app }}
-      flok-admin: ${{ steps.filter.outputs.admin }}
+      app: ${{ steps.filter.outputs.app }}
+      admin: ${{ steps.filter.outputs.admin }}
     steps:
       - uses: actions/checkout@v2
       - uses: dorny/paths-filter@v2
