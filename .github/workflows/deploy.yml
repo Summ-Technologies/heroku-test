@@ -32,6 +32,8 @@ jobs:
           heroku_app_name: flok-heroku-test1
           heroku_email: "jared@goflok.com"
           appdir: "app"
+          stack: "container"
+          env_file: /.env
   deploy-admin:
     needs: changes
     if: ${{ needs.changes.outputs.admin == 'true' }}
@@ -44,3 +46,5 @@ jobs:
           heroku_app_name: flok-heroku-test2
           heroku_email: "jared@goflok.com"
           appdir: "admin"
+          stack: "container"
+          env_file: /.env
