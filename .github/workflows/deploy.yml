@@ -1,28 +1,13 @@
 name: Deploy
 on:
-  push:
-    branches:
-      - master
+  workflow_call:
+    inputs:
+      app:
+        required: true
+        type: string # either app or admin
 jobs:
-  changes:
-    runs-on: ubuntu-latest
-    # Set job outputs to values from filter step
-    outputs:
-      app: ${{ steps.filter.outputs.app }}
-      admin: ${{ steps.filter.outputs.admin }}
-    steps:
-      - uses: actions/checkout@v2
-      - uses: dorny/paths-filter@v2
-        id: filter
-        with:
-          filters: |
-            app:
-              - 'app/**'
-            admin:
-              - 'admin/**'
   deploy-app:
-    needs: changes
-    if: ${{ needs.changes.outputs.app == 'true' }}
+    if: ${{ inputs.app == 'app' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -35,8 +20,7 @@ jobs:
           stack: "container"
           env_file: /.env.prod
   deploy-admin:
-    needs: changes
-    if: ${{ needs.changes.outputs.admin == 'true' }}
+    if: ${{ inputs.app == 'admin' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
