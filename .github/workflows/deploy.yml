@@ -9,7 +9,7 @@ on:
       HEROKU_API_KEY:
         required: true
 env:
-  HEROKU_APP_NAME: flok-admin-staging
+  HEROKU_APP_NAME: flok-test
 jobs:
   deploy-app:
     if: ${{ inputs.app == 'app' }}
