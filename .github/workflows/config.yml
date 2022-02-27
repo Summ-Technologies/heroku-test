@@ -5,7 +5,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: Summ-Technologies/heroku-config@da7516dd182b82f84ca247c404f2780f81490001
+      - uses: Summ-Technologies/heroku-config
         with:
           heroku_app_name: flok-backend-staging
           heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
