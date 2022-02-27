@@ -2,7 +2,7 @@ name: Auto deploy
 on:
   push:
     branches:
-      - master
+      - no-match
 jobs:
   changes:
     runs-on: ubuntu-latest
