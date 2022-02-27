@@ -8,20 +8,26 @@ on:
     secrets:
       HEROKU_API_KEY:
         required: true
+env:
+  HEROKU_APP_NAME: flok-admin-staging
 jobs:
   deploy-app:
     if: ${{ inputs.app == 'app' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: akhileshns/heroku-deploy@v3.12.12
+      - uses: Summ-Technologies/heroku-config@master
         with:
-          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-          heroku_app_name: flok-heroku-test1
-          heroku_email: "jared@goflok.com"
-          appdir: "app"
-          stack: "container"
-          env_file: /.env.prod
+          heroku_app_name: ${{ env.HEROKU_APP_NAME }}
+          heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
+          envfile_path: admin/.env.prod
+      - uses: gonuit/heroku-docker-deploy@v1.3.3
+        with:
+          heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
+          heroku_app_name: ${{ env.HEROKU_APP_NAME }}
+          email: "jared@goflok.com"
+          dockerfile_directory: "./app/"
+          dockerfile_name: "Dockerfile"
   deploy-admin:
     if: ${{ inputs.app == 'admin' }}
     runs-on: ubuntu-latest
