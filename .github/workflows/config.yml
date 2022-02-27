@@ -2,6 +2,7 @@ name: Manual set config
 on: workflow_dispatch
 jobs:
   manual-set-config:
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - uses: Summ-Technologies/heroku-config@da7516dd182b82f84ca247c404f2780f81490001
