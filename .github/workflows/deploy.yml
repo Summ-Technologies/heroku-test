@@ -30,7 +30,6 @@ jobs:
           email: "jared@goflok.com"
           dockerfile_directory: "./app/"
           dockerfile_name: "Dockerfile"
-          docker_options: "--build-arg PIP_EXTRA_INDEX_URL=${{ secrets.PIP_EXTRA_INDEX_URL }}"
   deploy-admin:
     if: ${{ inputs.app == 'admin' }}
     runs-on: ubuntu-latest
