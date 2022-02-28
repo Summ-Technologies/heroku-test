@@ -25,3 +25,4 @@ jobs:
       app: admin
     secrets:
       HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+      PIP_EXTRA_INDEX_URL: ${{ secrets.HEROKU_API_KEY }}
