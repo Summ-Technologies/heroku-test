@@ -8,6 +8,8 @@ on:
     secrets:
       HEROKU_API_KEY:
         required: true
+      PIP_EXTRA_INDEX_URL:
+        required: true
 env:
   HEROKU_APP_NAME: flok-test
 jobs:
@@ -28,6 +30,7 @@ jobs:
           email: "jared@goflok.com"
           dockerfile_directory: "./app/"
           dockerfile_name: "Dockerfile"
+          docker_options: "--build-arg PIP_EXTRA_INDEX_URL=${{ secrets.PIP_EXTRA_INDEX_URL }}"
   deploy-admin:
     if: ${{ inputs.app == 'admin' }}
     runs-on: ubuntu-latest
