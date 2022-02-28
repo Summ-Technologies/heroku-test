@@ -1,5 +1,7 @@
 FROM jaredhanson11/serverbase
 
+ARG PIP_EXTRA_INDEX_URL
+
 # Install required packages
 COPY requirements.txt ./requirements.txt
 RUN pip install --no-cache -r requirements.txt \
