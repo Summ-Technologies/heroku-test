@@ -8,8 +8,6 @@ on:
     secrets:
       HEROKU_API_KEY:
         required: true
-      PIP_EXTRA_INDEX_URL:
-        required: true
 env:
   HEROKU_APP_NAME: flok-test
 jobs:
