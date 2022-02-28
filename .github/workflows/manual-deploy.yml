@@ -17,7 +17,7 @@ jobs:
       app: app
     secrets:
       HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-      PIP_EXTRA_INDEX_URL: ${{ secrets.HEROKU_API_KEY }}
+      PIP_EXTRA_INDEX_URL: ${{ secrets.PIP_EXTRA_INDEX_URL }}
   manual-deploy-admin:
     if: ${{ github.event.inputs.app == 'admin'}}
     uses: ./.github/workflows/deploy.yml
